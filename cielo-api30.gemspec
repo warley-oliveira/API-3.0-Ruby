@@ -30,7 +30,10 @@ Gem::Specification.new do |spec|
                 "lib/cielo/api30/request/create_sale_request.rb",
                 "lib/cielo/api30/request/query_sale_request.rb",
                 "lib/cielo/api30/request/update_sale_request.rb"]
-
+  spec.files         = Dir.chdir(File.expand_path('..', __FILE__)) do
+    # `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
+    `git ls-files -z`.split("\x0").reject { |f| !f.match(%r{^(lib)/}) }
+  end
   # spec.add_dependency "bundler", "~> 1.6"
   spec.add_dependency "uuidtools", "~> 2.1"
   spec.add_development_dependency "yard", "~> 0.8"
